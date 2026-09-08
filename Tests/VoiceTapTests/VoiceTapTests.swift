@@ -77,6 +77,44 @@ final class ShortcutTests: XCTestCase {
         let expected = CGEventFlags.maskCommand.rawValue | CGEventFlags.maskSecondaryFn.rawValue
         XCTAssertEqual(Shortcut.normalizeCG(flags), expected)
     }
+
+    func testNormalizeCGPreservesLeftRightCommandOption() {
+        // 右 ⌘ / 左 ⌥ 的侧键位必须保留，才能精确绑定到某一侧
+        let rightCmdLeftOpt: CGEventFlags = [.maskCommand, .rightCommandBit, .maskAlternate, .leftAlternateBit]
+        let normalized = CGEventFlags(rawValue: Shortcut.normalizeCG(rightCmdLeftOpt))
+        XCTAssertTrue(normalized.contains(.maskCommand))
+        XCTAssertTrue(normalized.contains(.rightCommandBit))
+        XCTAssertFalse(normalized.contains(.leftCommandBit))
+        XCTAssertTrue(normalized.contains(.maskAlternate))
+        XCTAssertTrue(normalized.contains(.leftAlternateBit))
+        XCTAssertFalse(normalized.contains(.rightAlternateBit))
+    }
+
+    func testModifiersMatchDistinguishesRightCommand() {
+        // 新快捷键：绑到右 ⌘ → 只认右 ⌘，左 ⌘ 不匹配
+        let rightCmd = CGEventFlags.maskCommand.rawValue | CGEventFlags.rightCommandBit.rawValue
+        let rightEvent = CGEventFlags.maskCommand.rawValue | CGEventFlags.rightCommandBit.rawValue
+        let leftEvent = CGEventFlags.maskCommand.rawValue | CGEventFlags.leftCommandBit.rawValue
+        XCTAssertTrue(Shortcut.modifiersMatch(stored: rightCmd, event: rightEvent))
+        XCTAssertFalse(Shortcut.modifiersMatch(stored: rightCmd, event: leftEvent))
+    }
+
+    func testModifiersMatchLegacyCommandMatchesEitherSide() {
+        // 旧快捷键：只存通用 ⌘ → 左 ⌘ 和右 ⌘ 都匹配（向后兼容）
+        let legacyCmd = CGEventFlags.maskCommand.rawValue
+        let rightEvent = CGEventFlags.maskCommand.rawValue | CGEventFlags.rightCommandBit.rawValue
+        let leftEvent = CGEventFlags.maskCommand.rawValue | CGEventFlags.leftCommandBit.rawValue
+        XCTAssertTrue(Shortcut.modifiersMatch(stored: legacyCmd, event: rightEvent))
+        XCTAssertTrue(Shortcut.modifiersMatch(stored: legacyCmd, event: leftEvent))
+    }
+
+    func testDisplayStringShowsSideForCommandOption() {
+        let rightCmdLeftOpt = Shortcut(keyCode: nil,
+            modifiers: (CGEventFlags.maskCommand.rawValue | CGEventFlags.rightCommandBit.rawValue
+                        | CGEventFlags.maskAlternate.rawValue | CGEventFlags.leftAlternateBit.rawValue))
+        XCTAssertTrue(rightCmdLeftOpt.displayString.contains("⌘右"), "右 ⌘ 应标出「右」：\(rightCmdLeftOpt.displayString)")
+        XCTAssertTrue(rightCmdLeftOpt.displayString.contains("⌥左"), "左 ⌥ 应标出「左」：\(rightCmdLeftOpt.displayString)")
+    }
 }
 
 // MARK: - 触发方式

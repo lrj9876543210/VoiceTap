@@ -1,6 +1,16 @@
 import Carbon.HIToolbox
 import Cocoa
 
+// macOS 按下右修饰键时事件会同时带「通用位」与该「侧键位」，但当前 SDK 的
+// CGEventFlags OptionSet 未暴露左右侧键位成员，这里用官方原始位值
+// （kCGEventFlagMaskLeft*/Right*，来自 CoreGraphics/CGEventTypes.h，稳定不变）补上。
+extension CGEventFlags {
+    static let leftCommandBit   = CGEventFlags(rawValue: 0x00000008)
+    static let rightCommandBit  = CGEventFlags(rawValue: 0x00000010)
+    static let leftAlternateBit = CGEventFlags(rawValue: 0x00000020)
+    static let rightAlternateBit = CGEventFlags(rawValue: 0x00000040)
+}
+
 /// 一个快捷键。
 ///
 /// VoiceTap 并不知道输入法的存在——它只是「按下某个键」，谁监听那个键谁响应。
@@ -43,9 +53,9 @@ struct Shortcut: Codable, Equatable {
         let f = flags
         if f.contains(.maskSecondaryFn) { result += "fn " }
         if f.contains(.maskControl) { result += "⌃" }
-        if f.contains(.maskAlternate) { result += "⌥" }
+        if f.contains(.maskAlternate) { result += "⌥" + Self.sideMark(f, left: .leftAlternateBit, right: .rightAlternateBit) }
         if f.contains(.maskShift) { result += "⇧" }
-        if f.contains(.maskCommand) { result += "⌘" }
+        if f.contains(.maskCommand) { result += "⌘" + Self.sideMark(f, left: .leftCommandBit, right: .rightCommandBit) }
         if let keyCode { result += Self.keyName(for: keyCode) }
         return result.isEmpty ? "未设置" : result.trimmingCharacters(in: .whitespaces)
     }
@@ -122,6 +132,12 @@ struct Shortcut: Codable, Equatable {
     }
 
     /// CGEvent 版本。录制走 EventTap，拿到的是 `CGEventFlags`。
+    ///
+    /// **左右区分**：`⌘` / `⌥` 保留 `maskLeft*` / `maskRight*` 侧键位，
+    /// 从而能把快捷键精确绑到「右 ⌘」「左 ⌥」等特定键——右 ⌘ / 右 ⌥ 在 macOS 上
+    /// 一般闲置，适合占作语音触发键。
+    /// `⌃` / `⇧` / `fn` 只保留通用位（不区分左右），保持原行为。
+    /// 仍丢弃 numpad / 大小写锁等噪声位。
     static func normalizeCG(_ flags: CGEventFlags) -> UInt64 {
         var result: CGEventFlags = []
         if flags.contains(.maskSecondaryFn) { result.insert(.maskSecondaryFn) }
@@ -129,6 +145,55 @@ struct Shortcut: Codable, Equatable {
         if flags.contains(.maskAlternate) { result.insert(.maskAlternate) }
         if flags.contains(.maskShift) { result.insert(.maskShift) }
         if flags.contains(.maskCommand) { result.insert(.maskCommand) }
+        // 仅 Command / Option 保留左右侧键位
+        if flags.contains(.leftAlternateBit) { result.insert(.leftAlternateBit) }
+        if flags.contains(.rightAlternateBit) { result.insert(.rightAlternateBit) }
+        if flags.contains(.leftCommandBit) { result.insert(.leftCommandBit) }
+        if flags.contains(.rightCommandBit) { result.insert(.rightCommandBit) }
         return result.rawValue
+    }
+
+    /// 修饰键是否匹配，规则：
+    /// - **`⌘` / `⌥`**：快捷键若存了某一侧键位（新录制）→ 只认那一侧；
+    ///   只存通用位（旧快捷键 / 未指定侧）→ 任意一侧都匹配（向后兼容）。
+    /// - **`⌃` / `⇧` / `fn`**：只比对通用位（不区分左右）。
+    ///
+    /// macOS 按下右修饰键时事件会同时带通用位与该侧位，所以「只存通用位」
+    /// 的快捷键靠通用位即可命中任意一侧，无需感知左右。
+    static func modifiersMatch(stored: UInt64, event: UInt64) -> Bool {
+        let s = CGEventFlags(rawValue: stored)
+        let e = CGEventFlags(rawValue: event)
+
+        let pairs: [(generic: CGEventFlags, left: CGEventFlags, right: CGEventFlags)] = [
+            (.maskCommand, .leftCommandBit, .rightCommandBit),
+            (.maskAlternate, .leftAlternateBit, .rightAlternateBit),
+        ]
+        for (generic, left, right) in pairs {
+            let sHas = s.contains(generic) || s.contains(left) || s.contains(right)
+            let eHas = e.contains(generic) || e.contains(left) || e.contains(right)
+            let sLeft = s.contains(left), sRight = s.contains(right)
+            let eLeft = e.contains(left), eRight = e.contains(right)
+            if sLeft || sRight {
+                // 新快捷键：精确认侧
+                if sLeft != eLeft || sRight != eRight { return false }
+            } else if sHas {
+                if !e.contains(generic) { return false }
+            } else if eHas {
+                // 快捷键根本不含该修饰键而事件含 → 不匹配
+                return false
+            }
+        }
+
+        // ⌃ ⇧ fn 仅比对通用位
+        let genericMask: CGEventFlags = [.maskSecondaryFn, .maskControl, .maskShift]
+        return s.intersection(genericMask) == e.intersection(genericMask)
+    }
+
+    /// 侧键标记：存了某一侧就返回「左」/「右」，否则空串（任意侧）
+    private static func sideMark(_ flags: CGEventFlags,
+                                 left: CGEventFlags, right: CGEventFlags) -> String {
+        if flags.contains(left) && !flags.contains(right) { return "左" }
+        if flags.contains(right) && !flags.contains(left) { return "右" }
+        return ""
     }
 }

@@ -167,7 +167,7 @@ final class GlobalHotKey {
         if shortcut.isModifierOnly {
             // 纯修饰键（典型的就是单独一个 fn）：只有 flagsChanged，永远等不到 keyDown
             guard type == .flagsChanged else { return false }
-            let nowDown = normalized == shortcut.modifiers
+            let nowDown = Shortcut.modifiersMatch(stored: shortcut.modifiers, event: normalized)
             guard nowDown != isDown else { return false }   // 状态没变，别重复上报
             isDown = nowDown
             let swallow = shouldSwallow
@@ -176,7 +176,8 @@ final class GlobalHotKey {
         }
 
         // 修饰键 + 主键
-        guard keyCode == shortcut.keyCode, normalized == shortcut.modifiers else { return false }
+        guard keyCode == shortcut.keyCode,
+              Shortcut.modifiersMatch(stored: shortcut.modifiers, event: normalized) else { return false }
         switch type {
         case .keyDown:
             guard !isDown else { return shouldSwallow }   // 系统的按键重复，不重复上报
