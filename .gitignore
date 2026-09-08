@@ -6,6 +6,8 @@ AGENTS.md
 .cursorrules
 .aider*
 .github/copilot-instructions.md
+.idea/
+.workbuddy/
 
 # Swift / SwiftPM
 .build/
