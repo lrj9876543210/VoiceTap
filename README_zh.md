@@ -70,13 +70,18 @@ VoiceTap 的做法是「借一下就还」：按住快捷键的那几秒把目�
 xattr -dr com.apple.quarantine /Applications/VoiceTap.app
 ```
 
-或从源码构建：
+或从源码构建（需要 Xcode）：
 
 ```bash
 git clone https://github.com/lifedever/VoiceTap.git
 cd VoiceTap
-./build.sh && ./install.sh
+open VoiceTap.xcodeproj        # 在 Xcode 里打开
 ```
+
+- 工程已预配置 **Developer ID Application** 签名（团队 `C7LT6YDVN5`），直接用 ⌘B 构建即可；
+  若证书或团队不是你的，在 Target → Signing & Capabilities 改成自己的开发者账号或证书。
+- 版本号来自仓库根 `VERSION`（单一事实源），由构建脚本自动写进 `Info.plist`，无需手动改。
+- 想对外分发：Xcode → Organizer → 归档后用 `xcrun notarytool` 公证（需 Developer ID 证书）。
 
 ## 权限
 

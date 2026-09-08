@@ -1,0 +1,472 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		79511DA56EC4850D74FB280A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75A294CA6F92DFFEF4E17CA /* AppDelegate.swift */; };
+		2E114051FA109798D9176E22 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB159F0F8DD622538D0BB09 /* main.swift */; };
+		10C51ED3F603FD6157ECA3A6 /* AudioDeviceWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4DE886B8BFDB83C59B7FB5 /* AudioDeviceWatcher.swift */; };
+		291BBC2F108EDAC057BD0C13 /* PTTController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A06882DA502C2B99C5EBEC /* PTTController.swift */; };
+		4A2D645B6806292D7700495D /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8656B9A7297A54735ED672E3 /* Settings.swift */; };
+		E991FCA76D2F99552F08881D /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B7DD834444CA69C3D17911 /* SettingsViewModel.swift */; };
+		3D0015BA321D2EB7AFB624B0 /* GlobalHotKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE7469985DA3E42E5414CDA /* GlobalHotKey.swift */; };
+		900B09C6389E85C0C4E9FAD1 /* HeadsetMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD826D7C0EE248E0ECBD040C /* HeadsetMonitor.swift */; };
+		20FBF22A9BFF76D29EB6E8AB /* KeySynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C382E03D51E108658DC09F /* KeySynthesizer.swift */; };
+		DC357F2D5CCE95A07023E0D0 /* Shortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8881A78CA2B655CF504388 /* Shortcut.swift */; };
+		84330C57A0174EEDDF239558 /* ShortcutRecorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E395E8F9B90921A27B1A1BBC /* ShortcutRecorderView.swift */; };
+		9159E2B232E11C6F6FF2780D /* InputMethodCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545372FAFC6429EDF7674FCE /* InputMethodCatalog.swift */; };
+		E685BCD7EB4BE618231C3BFA /* InputMethodSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199DE308054E6723D8AD8FB4 /* InputMethodSwitcher.swift */; };
+		950BBEB503833669077B7A91 /* NowPlayingGuard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E49CE0501995EFEA857F3C8 /* NowPlayingGuard.swift */; };
+		771C6DA17D41F6AD69E08573 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA6B90D17724736489B7EEC /* AppInfo.swift */; };
+		995D9D96ADC46CCE13C72AED /* AppVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15554332E980780E0815B327 /* AppVersion.swift */; };
+		56DFDF2185B90130193F52FE /* LaunchAtLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59549C4CF9A1A8E38B9E3E01 /* LaunchAtLogin.swift */; };
+		81F00153AD63595D50C7CDF1 /* Permissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33425A278159CC7306E46212 /* Permissions.swift */; };
+		2A87F3B95626379F7DC63A8F /* DiagnosticsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4BE3B004D0BA447A17B6B4 /* DiagnosticsWindowController.swift */; };
+		BACC7B7498C60AAD1C72B2C8 /* SettingsWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F685996724D7B0838E095DA /* SettingsWindow.swift */; };
+		2080DDEC904D554BE86FB744 /* StatusIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED9481FD88A33243F275D5B /* StatusIcon.swift */; };
+		4A458E1316B8561327C4F01D /* UpdateChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DCC543EDFCE5136114CEA1 /* UpdateChecker.swift */; };
+		985E556519FF10AECD10F73A /* VoiceTapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BBC06DC072CBB10FF31AD4 /* VoiceTapTests.swift */; };
+		F614E318D31DBE903F3F67B8 /* AppIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = FE494F2F5B6337810E1BC10B /* AppIcon.icns */; };
+		B2C60F81E97C6C1A50C60E99 /* logo.svg in Resources */ = {isa = PBXBuildFile; fileRef = DBEB983FE89864E80019EFCF /* logo.svg */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B75A294CA6F92DFFEF4E17CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sources/VoiceTap/App/AppDelegate.swift"; sourceTree = "<group>"; };
+		8BB159F0F8DD622538D0BB09 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sources/VoiceTap/App/main.swift"; sourceTree = "<group>"; };
+		8C4DE886B8BFDB83C59B7FB5 /* AudioDeviceWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sources/VoiceTap/Audio/AudioDeviceWatcher.swift"; sourceTree = "<group>"; };
+		70A06882DA502C2B99C5EBEC /* PTTController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sources/VoiceTap/Domain/PTTController.swift"; sourceTree = "<group>"; };
+		8656B9A7297A54735ED672E3 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sources/VoiceTap/Domain/Settings.swift"; sourceTree = "<group>"; };
+		B8B7DD834444CA69C3D17911 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sources/VoiceTap/Domain/SettingsViewModel.swift"; sourceTree = "<group>"; };
+		9FE7469985DA3E42E5414CDA /* GlobalHotKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sources/VoiceTap/HID/GlobalHotKey.swift"; sourceTree = "<group>"; };
+		BD826D7C0EE248E0ECBD040C /* HeadsetMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sources/VoiceTap/HID/HeadsetMonitor.swift"; sourceTree = "<group>"; };
+		22C382E03D51E108658DC09F /* KeySynthesizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sources/VoiceTap/HID/KeySynthesizer.swift"; sourceTree = "<group>"; };
+		1C8881A78CA2B655CF504388 /* Shortcut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sources/VoiceTap/HID/Shortcut.swift"; sourceTree = "<group>"; };
+		E395E8F9B90921A27B1A1BBC /* ShortcutRecorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sources/VoiceTap/HID/ShortcutRecorderView.swift"; sourceTree = "<group>"; };
+		545372FAFC6429EDF7674FCE /* InputMethodCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sources/VoiceTap/InputMethod/InputMethodCatalog.swift"; sourceTree = "<group>"; };
+		199DE308054E6723D8AD8FB4 /* InputMethodSwitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sources/VoiceTap/InputMethod/InputMethodSwitcher.swift"; sourceTree = "<group>"; };
+		0E49CE0501995EFEA857F3C8 /* NowPlayingGuard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sources/VoiceTap/Media/NowPlayingGuard.swift"; sourceTree = "<group>"; };
+		EEA6B90D17724736489B7EEC /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sources/VoiceTap/Support/AppInfo.swift"; sourceTree = "<group>"; };
+		15554332E980780E0815B327 /* AppVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sources/VoiceTap/Support/AppVersion.swift"; sourceTree = "<group>"; };
+		59549C4CF9A1A8E38B9E3E01 /* LaunchAtLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sources/VoiceTap/Support/LaunchAtLogin.swift"; sourceTree = "<group>"; };
+		33425A278159CC7306E46212 /* Permissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sources/VoiceTap/Support/Permissions.swift"; sourceTree = "<group>"; };
+		DD4BE3B004D0BA447A17B6B4 /* DiagnosticsWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sources/VoiceTap/UI/DiagnosticsWindowController.swift"; sourceTree = "<group>"; };
+		5F685996724D7B0838E095DA /* SettingsWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sources/VoiceTap/UI/SettingsWindow.swift"; sourceTree = "<group>"; };
+		BED9481FD88A33243F275D5B /* StatusIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sources/VoiceTap/UI/StatusIcon.swift"; sourceTree = "<group>"; };
+		B8DCC543EDFCE5136114CEA1 /* UpdateChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sources/VoiceTap/Update/UpdateChecker.swift"; sourceTree = "<group>"; };
+		D9BBC06DC072CBB10FF31AD4 /* VoiceTapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tests/VoiceTapTests/VoiceTapTests.swift"; sourceTree = "<group>"; };
+		FE494F2F5B6337810E1BC10B /* AppIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "AppIcon.icns"; path = "icons/icon.icns"; sourceTree = "<group>"; };
+		DBEB983FE89864E80019EFCF /* logo.svg */ = {isa = PBXFileReference; lastKnownFileType = file; name = "logo.svg"; path = "Resources/logo.svg"; sourceTree = "<group>"; };
+		14389818311E9EFFC95493EC /* VoiceTap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VoiceTap.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E88385D63885D64F96DCC85 /* VoiceTapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VoiceTapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		08640B87AC8696BF5AB784D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B221895B3EF8C28152020788 /* VoiceTap.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VoiceTap.entitlements; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		66474652908ED2E0775E04A9 = {
+			isa = PBXGroup;
+			children = (
+				DBDE6BF6A8FE93FAB555567A /* Sources */,
+				C1D5F9FC285FA9B5B78B2784 /* Resources */,
+				158EFF22A6EF5F98E381D118 /* Products */,
+				08640B87AC8696BF5AB784D9 /* Info.plist */,
+				B221895B3EF8C28152020788 /* VoiceTap.entitlements */,
+			);
+			sourceTree = "<group>";
+		};
+		DBDE6BF6A8FE93FAB555567A /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				B75A294CA6F92DFFEF4E17CA /* AppDelegate.swift */,
+				8BB159F0F8DD622538D0BB09 /* main.swift */,
+				8C4DE886B8BFDB83C59B7FB5 /* AudioDeviceWatcher.swift */,
+				70A06882DA502C2B99C5EBEC /* PTTController.swift */,
+				8656B9A7297A54735ED672E3 /* Settings.swift */,
+				B8B7DD834444CA69C3D17911 /* SettingsViewModel.swift */,
+				9FE7469985DA3E42E5414CDA /* GlobalHotKey.swift */,
+				BD826D7C0EE248E0ECBD040C /* HeadsetMonitor.swift */,
+				22C382E03D51E108658DC09F /* KeySynthesizer.swift */,
+				1C8881A78CA2B655CF504388 /* Shortcut.swift */,
+				E395E8F9B90921A27B1A1BBC /* ShortcutRecorderView.swift */,
+				545372FAFC6429EDF7674FCE /* InputMethodCatalog.swift */,
+				199DE308054E6723D8AD8FB4 /* InputMethodSwitcher.swift */,
+				0E49CE0501995EFEA857F3C8 /* NowPlayingGuard.swift */,
+				EEA6B90D17724736489B7EEC /* AppInfo.swift */,
+				15554332E980780E0815B327 /* AppVersion.swift */,
+				59549C4CF9A1A8E38B9E3E01 /* LaunchAtLogin.swift */,
+				33425A278159CC7306E46212 /* Permissions.swift */,
+				DD4BE3B004D0BA447A17B6B4 /* DiagnosticsWindowController.swift */,
+				5F685996724D7B0838E095DA /* SettingsWindow.swift */,
+				BED9481FD88A33243F275D5B /* StatusIcon.swift */,
+				B8DCC543EDFCE5136114CEA1 /* UpdateChecker.swift */
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
+		C1D5F9FC285FA9B5B78B2784 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FE494F2F5B6337810E1BC10B /* AppIcon.icns */,
+				DBEB983FE89864E80019EFCF /* logo.svg */
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		158EFF22A6EF5F98E381D118 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				14389818311E9EFFC95493EC /* VoiceTap.app */,
+				7E88385D63885D64F96DCC85 /* VoiceTapTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		34A04005BCAF206EEC990BD9 /* VoiceTap */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B64260D8411E6AF9C3D04C4F /* Build configuration list for PBXNativeTarget "VoiceTap" */;
+			buildPhases = (
+				D7C1BFE7D80B8EB4BA9DF36D /* Sources */,
+				0EB9F436983BFDE3C85FBAF7 /* Frameworks */,
+				25C4D3F7D04816FB01CEFF95 /* Resources */,
+				B8572B43151D21CF655771EA /* Sync version from VERSION */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VoiceTap;
+			productName = VoiceTap;
+			productReference = 14389818311E9EFFC95493EC /* VoiceTap.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E5B4A42C1A9B11F842B19C64 /* VoiceTapTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7721D6987BD2DE543B5AD967 /* Build configuration list for PBXNativeTarget "VoiceTapTests" */;
+			buildPhases = (
+				050C7670768F24F74966C8F0 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				25E506C77AE10A94A633D071 /* PBXTargetDependency */,
+			);
+			name = VoiceTapTests;
+			productName = VoiceTapTests;
+			productReference = 7E88385D63885D64F96DCC85 /* VoiceTapTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		244210E48437B6556980A702 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					34A04005BCAF206EEC990BD9 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					E5B4A42C1A9B11F842B19C64 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 34A04005BCAF206EEC990BD9 /* VoiceTap */;
+					};
+				};
+			};
+			buildConfigurationList = 2284F32B9CBD237470FF7A1E /* Build configuration list for PBXProject "VoiceTap" */;
+			compatibilityVersion = "Xcode 15.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 66474652908ED2E0775E04A9;
+			productRefGroup = 158EFF22A6EF5F98E381D118 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				34A04005BCAF206EEC990BD9 /* VoiceTap */,
+				E5B4A42C1A9B11F842B19C64 /* VoiceTapTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D7C1BFE7D80B8EB4BA9DF36D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				79511DA56EC4850D74FB280A /* AppDelegate.swift in Sources */,
+				2E114051FA109798D9176E22 /* main.swift in Sources */,
+				10C51ED3F603FD6157ECA3A6 /* AudioDeviceWatcher.swift in Sources */,
+				291BBC2F108EDAC057BD0C13 /* PTTController.swift in Sources */,
+				4A2D645B6806292D7700495D /* Settings.swift in Sources */,
+				E991FCA76D2F99552F08881D /* SettingsViewModel.swift in Sources */,
+				3D0015BA321D2EB7AFB624B0 /* GlobalHotKey.swift in Sources */,
+				900B09C6389E85C0C4E9FAD1 /* HeadsetMonitor.swift in Sources */,
+				20FBF22A9BFF76D29EB6E8AB /* KeySynthesizer.swift in Sources */,
+				DC357F2D5CCE95A07023E0D0 /* Shortcut.swift in Sources */,
+				84330C57A0174EEDDF239558 /* ShortcutRecorderView.swift in Sources */,
+				9159E2B232E11C6F6FF2780D /* InputMethodCatalog.swift in Sources */,
+				E685BCD7EB4BE618231C3BFA /* InputMethodSwitcher.swift in Sources */,
+				950BBEB503833669077B7A91 /* NowPlayingGuard.swift in Sources */,
+				771C6DA17D41F6AD69E08573 /* AppInfo.swift in Sources */,
+				995D9D96ADC46CCE13C72AED /* AppVersion.swift in Sources */,
+				56DFDF2185B90130193F52FE /* LaunchAtLogin.swift in Sources */,
+				81F00153AD63595D50C7CDF1 /* Permissions.swift in Sources */,
+				2A87F3B95626379F7DC63A8F /* DiagnosticsWindowController.swift in Sources */,
+				BACC7B7498C60AAD1C72B2C8 /* SettingsWindow.swift in Sources */,
+				2080DDEC904D554BE86FB744 /* StatusIcon.swift in Sources */,
+				4A458E1316B8561327C4F01D /* UpdateChecker.swift in Sources */
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0EB9F436983BFDE3C85FBAF7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXResourcesBuildPhase section */
+		25C4D3F7D04816FB01CEFF95 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F614E318D31DBE903F3F67B8 /* AppIcon.icns in Resources */,
+				B2C60F81E97C6C1A50C60E99 /* logo.svg in Resources */
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		050C7670768F24F74966C8F0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				985E556519FF10AECD10F73A /* VoiceTapTests.swift in Sources */
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B8572B43151D21CF655771EA /* Sync version from VERSION */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+		shellScript = "# 单一版本事实源：把仓库根 VERSION 写进被打好的 Info.plist\nVER=\"$(tr -d '[:space:]' < \"$SRCROOT/VERSION\")\"\nif [ -n \"$VER\" ] && [ -n \"$BUILT_PRODUCTS_DIR\" ] && [ -n \"$INFOPLIST_PATH\" ]; then\n  /usr/libexec/PlistBuddy -c \"Set :CFBundleShortVersionString $VER\" \"$BUILT_PRODUCTS_DIR/$INFOPLIST_PATH\" 2>/dev/null\n  /usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $VER\" \"$BUILT_PRODUCTS_DIR/$INFOPLIST_PATH\" 2>/dev/null\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXContainerItemProxy section */
+		A5DB2CD10731EE203F5D9DD0 /* VoiceTapTests */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 244210E48437B6556980A702 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 34A04005BCAF206EEC990BD9 /* VoiceTap */;
+			remoteInfo = VoiceTap;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXTargetDependency section */
+		25E506C77AE10A94A633D071 /* VoiceTapTests */ = {
+			isa = PBXTargetDependency;
+			target = 34A04005BCAF206EEC990BD9 /* VoiceTap */;
+			targetProxy = A5DB2CD10731EE203F5D9DD0 /* VoiceTapTests */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		695A95D0955046EA56DF3A06 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4D1F64EF1FBF36A9BEC53788 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		C60729F6866D2F157B716DBD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+					CODE_SIGN_ENTITLEMENTS = VoiceTap.entitlements;
+					CODE_SIGN_STYLE = Manual;
+					PROVISIONING_PROFILE_SPECIFIER = "";
+					COMBINE_HIDPI_IMAGES = YES;
+					DEVELOPMENT_TEAM = C7LT6YDVN5;
+					ENABLE_HARDENED_RUNTIME = YES;
+					INFOPLIST_FILE = Info.plist;
+					INFOPLIST_KEY_LSUIElement = YES;
+					LD_RUNPATH_SEARCH_PATHS = (
+						"$(inherited)",
+						"@executable_path/../Frameworks",
+					);
+					MACOSX_DEPLOYMENT_TARGET = 14.0;
+					PRODUCT_BUNDLE_IDENTIFIER = com.lifedever.VoiceTap;
+					PRODUCT_NAME = "$(TARGET_NAME)";
+					SWIFT_VERSION = 6.0;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				SWIFT_COMPILATION_MODE = incremental;
+			};
+			name = Debug;
+		};
+		FE49A0AC35CE6122E71E8F5A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+					CODE_SIGN_ENTITLEMENTS = VoiceTap.entitlements;
+					CODE_SIGN_STYLE = Manual;
+					PROVISIONING_PROFILE_SPECIFIER = "";
+					COMBINE_HIDPI_IMAGES = YES;
+					DEVELOPMENT_TEAM = C7LT6YDVN5;
+					ENABLE_HARDENED_RUNTIME = YES;
+					INFOPLIST_FILE = Info.plist;
+					INFOPLIST_KEY_LSUIElement = YES;
+					LD_RUNPATH_SEARCH_PATHS = (
+						"$(inherited)",
+						"@executable_path/../Frameworks",
+					);
+					MACOSX_DEPLOYMENT_TARGET = 14.0;
+					PRODUCT_BUNDLE_IDENTIFIER = com.lifedever.VoiceTap;
+					PRODUCT_NAME = "$(TARGET_NAME)";
+					SWIFT_VERSION = 6.0;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+			};
+			name = Release;
+		};
+		7C47D840800FFFAA818B2C2A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+					CODE_SIGN_STYLE = Manual;
+					DEVELOPMENT_TEAM = C7LT6YDVN5;
+					COMBINE_HIDPI_IMAGES = YES;
+					LD_RUNPATH_SEARCH_PATHS = (
+						"$(inherited)",
+						"@executable_path/../Frameworks",
+						"@loader_path/../Frameworks",
+				);
+					MACOSX_DEPLOYMENT_TARGET = 14.0;
+					PRODUCT_BUNDLE_IDENTIFIER = com.lifedever.VoiceTapTests;
+					PRODUCT_NAME = "$(TARGET_NAME)";
+					SWIFT_MODULE_NAME = VoiceTapTests;
+					SWIFT_VERSION = 6.0;
+					TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VoiceTap.app/Contents/MacOS/VoiceTap";
+					BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				ENABLE_HARDENED_RUNTIME = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				SWIFT_COMPILATION_MODE = incremental;
+			};
+			name = Debug;
+		};
+		DDD0BE66A990B6BDA1AE8DA3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+					CODE_SIGN_STYLE = Manual;
+					DEVELOPMENT_TEAM = C7LT6YDVN5;
+					COMBINE_HIDPI_IMAGES = YES;
+					LD_RUNPATH_SEARCH_PATHS = (
+						"$(inherited)",
+						"@executable_path/../Frameworks",
+						"@loader_path/../Frameworks",
+				);
+					MACOSX_DEPLOYMENT_TARGET = 14.0;
+					PRODUCT_BUNDLE_IDENTIFIER = com.lifedever.VoiceTapTests;
+					PRODUCT_NAME = "$(TARGET_NAME)";
+					SWIFT_MODULE_NAME = VoiceTapTests;
+					SWIFT_VERSION = 6.0;
+					TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VoiceTap.app/Contents/MacOS/VoiceTap";
+					BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				ENABLE_HARDENED_RUNTIME = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2284F32B9CBD237470FF7A1E /* Build configuration list for PBXProject "VoiceTap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				695A95D0955046EA56DF3A06 /* Debug */,
+				4D1F64EF1FBF36A9BEC53788 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B64260D8411E6AF9C3D04C4F /* Build configuration list for PBXNativeTarget "VoiceTap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C60729F6866D2F157B716DBD /* Debug */,
+				FE49A0AC35CE6122E71E8F5A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7721D6987BD2DE543B5AD967 /* Build configuration list for PBXNativeTarget "VoiceTapTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7C47D840800FFFAA818B2C2A /* Debug */,
+				DDD0BE66A990B6BDA1AE8DA3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 244210E48437B6556980A702 /* Project object */;
+}

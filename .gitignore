@@ -12,8 +12,12 @@ AGENTS.md
 # Swift / SwiftPM
 .build/
 .swiftpm/
-*.xcodeproj
+
+# Xcode（工程文件入库，仅忽略用户数据与生成产物）
 *.xcworkspace
+xcuserdata/
+*.xcodeproj/xcuserdata/
+*.hmap
 
 # 构建产物
 .release/

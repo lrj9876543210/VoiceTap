@@ -70,13 +70,18 @@ If macOS says the developer cannot be verified, open **System Settings → Priva
 xattr -dr com.apple.quarantine /Applications/VoiceTap.app
 ```
 
-Or build from source:
+Or build from source (requires Xcode):
 
 ```bash
 git clone https://github.com/lifedever/VoiceTap.git
 cd VoiceTap
-./build.sh && ./install.sh
+open VoiceTap.xcodeproj        # open in Xcode
 ```
+
+- The project is pre-configured to sign with **Developer ID Application** (team `C7LT6YDVN5`); just press ⌘B to build.
+  If the certificate/team is not yours, change it to your own developer account or certificate under Target → Signing & Capabilities.
+- The version comes from `VERSION` at the repo root (single source of truth) and is synced into `Info.plist` automatically by a build script — no manual edit needed.
+- To distribute: Xcode → Organizer → archive, then notarize with `xcrun notarytool` (requires a Developer ID certificate).
 
 ## Permissions
 
